@@ -1,0 +1,747 @@
+\documentclass[14pt,a4paper,calibribody]{article}
+\usepackage{graphicx}
+\usepackage{tikz}
+\usetikzlibrary{calc}
+\usetikzlibrary{decorations.pathmorphing}
+\graphicspath{{Images/}}
+\usepackage{lipsum}% dummy text
+
+
+
+\begin{document}
+\begin{figure}[h]
+\begin{tikzpicture} [overlay,remember picture]
+       \draw [line width=0.5mm ] 
+        ($ (current page.north west) + (1cm, -1cm) $)
+        rectangle
+        ($ (current page.south east) + (-1cm,1cm) $);
+
+\end{tikzpicture}
+
+
+\centering
+\includegraphics [scale=0.2]{nsulogo.jpg}\\
+\centering
+{\large DEPARTMENT OF ELECTRICAL AND COMPUTER ENGINEERING }\\
+\vspace{0.5in}
+{\large PROJECT REPORT}\\ \vspace{0.09in}{ON}\\ 
+\vspace{0.1in}
+{\large{\textbf{\emph{``ONLINE MEDICARE SYSTEM"}}}}
+\begin{center}
+\vspace{0.3in}
+{\emph{Submitted By :}}\\ 
+\vspace{0.1in}
+\begin{tabular}{c c}
+\vspace{0.1in} 
+\large JARIN TASNIM        & 1912608042\\
+\large NAMIA JALAL ZARA    & 1911522642\\
+\large NOURIN AFREEN       & 1912251042\\
+\large MD.FATIN HABIB NIHAL& 1911350642\\
+\end{tabular}\\
+\vspace{0.5in}
+{\textbf{\emph{\large Under the Supervision of}}}\\
+\vspace{0.1in}
+{Dr.SIFAT MOMEN}\\
+{\emph{Associate professor\\
+North south university}}\\ 
+\vspace{0.3in}
+{CSE299 \\ Junior Design Project \\ SECTION : 01} \\ 
+\vspace{0.1in}
+{\small SUMMER 2022}\\
+\vspace{0.30in}
+\large{Submission Date: 31 August 2022}
+\end{center}
+\end{figure}
+\clearpage
+\begin{center}
+\large{\textbf{DECLARATION}}
+\end{center}
+This is to certify that this Project is our original work. No part of this work has been submitted elsewhere partially or fully for the award of any other degree or diploma. Any material reproduced in this project has been properly acknowledged.\\\\\\
+\begin{center}
+\large{\textbf{Student's Name and Signature}}
+\end{center}
+\begin{center}
+\includegraphics [scale=0.07]{jarin.jpg}\\
+\textbf{JARIN TASNIM\\ID:1912608042}
+\end{center}
+\begin{center}
+\includegraphics [scale=0.07]{nihal.jpg}\\
+\textbf{MD.FATIN HABIB NIHAL\\ID:1911350642}\\
+\end{center}
+\begin{center}
+\includegraphics [scale=0.2]{zara.png}\\
+\textbf{NAMIA JALAL ZARA\\ID:1911522642}
+\end{center}
+\begin{center}
+\includegraphics [scale=0.2]{arobi.png}\\
+\textbf{NOURIN AFREEN\\ID:1912251042}
+\end{center}
+\clearpage
+\begin{center}
+\large{\textbf{APPROVAL}}
+\end{center}
+We, Jarin Tasnim (1912608042), MD.Fatin Habib Nihal (1911350642), Namia Jalal Zara (1911522642) and Nourin Afreen (1912251042) members of CSE299 (Junior Design) under the Department of Electrical and Computer Engineering of North South University, have worked on the project titled “ONLINE MEDICARE SYSTEM” under the supervision of Dr.SIFAT MOMEN sir as a partial fulfillment of the requirement for the degree of Bachelors of Science in Computer Science and Engineering in Summer 2022 and has been accepted as satisfactory.\\\\\\\\\\\\\\\
+\begin{center}
+\large{\textbf{Supervisor's Signature}}
+\end{center}
+\begin{center}
+\vspace{0.8in}
+\end{center}
+\begin{center}
+{Dr.SIFAT MOMEN}\\
+{\emph{Associate professor\\
+Department of Electrical and Computer Engineering\\
+North South university\\
+Dhaka, Bangladesh}}\\ 
+\end{center}
+\begin{center}
+\vspace{1in}
+\end{center}
+\begin{center}
+Dr. RAJESH PALIT\\
+\emph{Professor and Chair (Acting)\\
+Department of Electrical and Computer Engineering\\
+North South University\\
+Dhaka, Bangladesh}
+\end{center}
+\clearpage
+\begin{center}
+\large{\textbf{Acknowledgement}}
+\end{center}
+\vspace{0.25in}
+All praises are due to Almighty Allah. Most Gracious, Most Merciful who blessed us to be here at North South University for pursuing the Bachelors degree.\\
+
+We have completed our CSE299 Junior Design project titled “ONLINE MEDICARE SYSTEM” and we would like to express our sincere gratitude to our advisor Dr.SIFAT MOMEN sir for his patience, motivation, enthusiasm and continuous support. His guidance throughout the duration of our project helped us to progress in a comprehensive manner.\\
+
+Our sincere thanks also go to North South University for providing an opportunity in our curriculum which enabled us to have an industrial level experience as part of our academics.\\
+
+Last but not the least, we would like to thank our family as their inspiration and guidance kept us focused and motivated.
+\clearpage
+
+\begin{center}
+\large{\textbf{ABSTRACT}}
+\end{center}
+We have created a web-based Online Medicare System. Our target is to create a reliable and fast experience for all the users and make it more efficient. Our website is fully functional with some very minor bugs and it is visually pleasing. It was built intending to have two kinds of users not just the patient but also the doctors. Our website has bunch of functionalities that makes the lives of both patient and doctors much easier as it makes their experience fluid and reduces their daily hassles. Patient has no longer need to have the hassle of getting an appointment of a doctor. They can now book appointments online through our website very easily. This website is also convenient for the doctor’s as well. They see their appointments and prescribe patients online through this website. 
+\clearpage
+\tableofcontents
+\clearpage
+\listoffigures
+\clearpage
+\section{\emph{\large{Introduction}}}
+The internet keeps developing brand-new, incredibly useful services that make consumers' life easier. The internet allows us to speak with people worldwide, conduct business online, meet new people and discover various cultures, seek for information, conduct research, and do a variety of other things. You can learn almost any topic you can think of on the internet. There is a vast amount of information on the internet. Among the subjects covered are government laws and services, trade exhibitions and conferences, market intelligence, innovative concepts, and technical assistance.\\\\
+\subsection{Project Definition}
+
+A distinctive cloud-based online Medicare system that includes both patients and hospital equipment. The main goal of this design is to improve on the current medical experience. No one like going to the hospital, yet sometimes we have no choice but to go. Hospitals' outdated systems are not very user-friendly. Long hours are spent in line for the first large stem. There are numerous additional issues that can negatively impact your hospital visit. Our primary goal is to make people's lives easier during difficult times. We are attempting to create a system that will lessen the amount of paperwork and free up people's time. 
+Our project is about a Medicare system which is an online based medical site. In this website people can appoint the doctors online according to their convenience. It is a freelancing website for a doctor. People can get medical based information and help through our website. Through our website any user can get information about doctors. Here they can also have appointments.\\\\
+\subsection{Problem Identification} 
+
+our website is made for an instant consultancy of a doctor. People do not usually visit hospitals unless they need to. We determine to make this website for lessening the hassle of the people to find a doctor as per their convenience. We can find many hospital management systems, but ours is not a management system it’s an online medical service system. Where the doctors will give online consultancy to the patients who will register into our website for taking our services. People can have any health issue in the middle of a journey. It is very hard to find a doctor for consultancy instantly. Through our website people can take an instant consultancy from the doctors who will be available.\\
+\clearpage
+\subsection{Why is this an important problem}
+
+In this modern age we are totally depend on internet based stuffs. Having a website based hospital system will help us to have service easily. This is an important problem because when people face an emergency situation (e.g. High Fever, or any kind of normal flu or pain) then they need a preliminary consultancy, so that they can get some primary treatment and if the problem is very serious then the patient can consult a doctor physically. So, from this website they can easily get the primary treatment from a doctor. \\
+\begin{figure}[h]
+\subsection{Planning (GANTT chart and optionally budget)}
+\includegraphics[scale=0.68]{gantt.png}
+\caption{Gantt Chart}
+\end{figure}
+\subsection{Contribution of each member in the team (including the contribution as percentage)}
+Our four-member team initially decided that two us will work on the front end and another two will work in the back end. But later we changed our plan and four of us sequentially in both frontend and backend but we divide the work according to our website pages.\\
+
+Here’s how four of us worked on the features: \\
+1. Jarin Tasnim: Admin Log in, Admin Dashboard, Add Doctor, Session Logs, View patient List, View doctor List, Search Patient, Search Doctor\\\\
+Percentage: 25\%\\\\ 
+2. MD. Fatin Habib Nihal: Homepage, Patient Registration, Patient log In, Patient Dashboard, Update Profile, Patient Appointment History, View Prescription\\\\
+Percentage: 25\%\\\\ 
+3. Namia Jalal Zara: Doctor Log In, Doctor Dashboard, Doctor Information, Add Medical History, Update Doctor Info, View Doctor’s Appointment, Create Prescription\\\\
+Percentage: 25\%\\\\ 
+4. Nourin Afreen: About Us, Feedback, Feedback queries in Admin Dashboard, Change Password, Log Out, Remark Queries.\\\\
+Percentage: 25\%
+
+\subsection{Section of tools}
+To develop and implement these characteristics we have studied and exercised in different fields. We have learned Html, CSS, JavaScript, Bootstrap, Json, PHP, Jquery, MySQL database for giving the software system in good shape and user friendly such that the user can take the advantages smoothly.\\\\
+\textbf{Html:} HTML code formats text and images correctly in Internet browsers. Without HTML, browsers don't know how to display text as elements or load images and other elements. HTML also provides the basic structure of the page, layered with cascading style sheets to change its appearance.\\\\
+\textbf{CSS:} CSS makes the front-end of a website shine and it creates a great user experience. Without CSS, websites would be less pleasing to the eye and likely much harder to navigate. In addition to layout and format, CSS is responsible for font color and more.\\\\
+\textbf{JavaScript:} JavaScript has evolved over the past 25 years to become a versatile and accessible programming language for working with web browsers. Developers use JavaScript to build complex interactive websites and browser games, and to connect servers to websites and web applications.\\\\
+\textbf{Bootstrap:} Bootstrap is a framework to help you design websites faster and easier. It includes HTML and CSS based design templates for typography, forms, buttons, tables, navigation, modals, image carousels, etc. It also gives you support for JavaScript plugins.\\\\
+\textbf{Json:} JSON is the ubiquitous, de facto format for sending data between web servers and browsers and mobile applications. Its simple design and flexibility make it easy to read and understand, and in most cases, easy to manipulate in the programming language of your choice.\\\\
+\textbf{PHP:} PHP (short for Hypertext Pre Processor) is the most widely used open source and general purpose server side scripting language used mainly in web development to create dynamic websites and applications.\\
+PHP can actually do anything related to server-side scripting or more popularly known as the backend of a website. For example, PHP can receive data from forms, generate dynamic page content, can work with databases, create sessions, send and receive cookies, send emails etc. There are also many hash functions available in PHP to encrypt user’s data that makes PHP secure and reliable to be used as a server-side scripting language. So these are some of the abilities of PHP that makes it suitable to be used as a server-side scripting language. \\\\
+\textbf{JQuery:} The purpose of jQuery is to make it much easier to use JavaScript on your website. JQuery takes a lot of common tasks that require many lines of JavaScript code to accomplish, and wraps them into methods that you can call with a single line of code.\\\\
+\textbf{MySQL Database:} MySQL is a database management system.It may be anything from a simple shopping list to a picture gallery or the vast amounts of information in a corporate network. To add, access, and process data stored in a computer database, you need a database management system such as MySQL Server.\\
+
+\subsection{How the rest of the report is structured}
+To design and implement our project report we use Latex.It is an excellent typesetting program with features for producing technical and scientific documentation. In rest of the report we have 5 chapters which includes the Project Specification, Design of the project,Implementation,Testing,Maintenance. In Chapter 2 we describe the features of our projects. In chapter 3 we describe the extended use case of every features of our project.In Chapter 4 we give information about our Implementation strategy. in other  parts we describe testing tool and the maintenance plan of the project.By going through the overall report one can easily get an idea about our project because the report describe our project elaborately.
+
+\clearpage  
+\section{\emph{\large{Project Specification }}}
+\subsection{Hompage}
+The first interface of the website will be the homepage. There will be a navigation bar in the website which will redirect the user to the homepage, log in options, doctor’s information page, Registration page, feedback, about us etc. If the user wants an appointment they need to create a profile with their information. Without an existing profile user cannot log in into the website. Here the about us and feedback section will also be available. In the feedback section users can share their reviews and also can rate the website.\\\\
+\begin{figure}[h]
+\includegraphics [scale=0.17]{homepage.png}\\
+\caption{Homepage}
+\end{figure}
+\subsection{Doctor Information}
+Our website contains the information of all doctors who will give the service and the treatment to the patients. Here, the doctor’s information will be shown. The user can be able to see a particular doctor’s information. The doctor’s information will be added by the admin while he/she will add any doctor into the website or system through the admin panel. The user will be able to see those added doctor into page.\\\\
+\begin{figure}[h]
+\includegraphics [scale=0.17]{doctor-info.png}\\
+\caption{Doctor Information}
+\end{figure}
+\subsection{Log In Systems}
+In our website, there will be three login Systems. First one is the Admin Login system, which can only be accessed by the Admin. Admin cannot be added by others. The owners of the website who will maintain the admin panel are admins. Admins Login information will be specified within the system. The second login system is the Patient Login / Register system. Patients have to register into the website for accessing the patient portal. The third Login System is the Doctors Login System. The admin will add the Doctors with email and password for login into the website.
+
+\subsubsection{Admin Log In}
+In our website, Admins have the most of the responsibility to maintain the website. Admin will login with their own username and password of Admin Panel.\\
+All the features available for admin panel after login are describing below:\\
+\begin{figure}[h]
+\includegraphics [scale=0.14]{admin-login.png}\\
+\caption{Admin Log in}
+\end{figure}
+
+\begin{figure}[h]
+\textbf{Admin Dashboard:}\\\\
+\includegraphics [scale=0.17]{admin-dash.png}\\\\
+\caption{Admin Dashboard}
+\end{figure}
+\textbf{Add Doctor:} Only admins will add a doctor. No one will have this authority rather than the Admins. Admins will add all the information of a doctor such as: Doctor’s Name, Specialization, Email ID, Password, Information, Consultancy fee’s location for adding a doctor on our website.\\
+\begin{figure}[h]
+\includegraphics [scale=0.08]{Admin Add Doctor.png}\\\\
+\caption{Add Doctor}
+\end{figure}
+\begin{figure}[h]
+\textbf{Manage Doctor:} Here admin can easily manage the doctor information. Admin can update the doctor information or delete a doctor from the website.\\\\\\
+\includegraphics [scale=0.17]{Admin Manage Doctors.png}\\
+\caption{Manage Doctors}
+\end{figure}
+\begin{figure}[h]
+\includegraphics [scale=0.17]{Admin Edit Doctor Details.png}\\\\
+\caption{Edit Doctor Details}
+\end{figure}
+\clearpage
+\textbf{View Patient List:} Admin can view patients list who registered in the website or the system and access to the information of the patients. The admin can also search the patient and see the details of them.\\\\
+\begin{figure}[h]
+\includegraphics [scale=0.17]{Admin View Patients.png}\\\\
+\caption{Admin View Patients}
+\end{figure}
+\begin{figure}[h]
+\includegraphics [scale=0.35]{Admin Search Patient.jpg}\\
+\caption{Admin Search Patient}
+\end{figure}
+\clearpage
+
+\begin{figure}[h]
+\textbf{View Appointment Details:} Admin can access the appointment details of patients where they can see the details of which doctor’s appointment patients took and also the schedules.\\\\
+\includegraphics [scale=0.17]{Patients Appointment History.png}\\
+\caption{Patients Appointment History}
+\end{figure}
+\textbf{View Medical History:} Admin will have the authority to access the patient’s medical history.\\
+\begin{figure}[h]
+\includegraphics [scale=0.12]{Medical History.png}\\
+\caption{Medical History}
+\end{figure}
+\clearpage
+\textbf{Session Logs:} The admin can see the log in times of both doctor's and the users.\\
+\begin{figure}[h]
+\includegraphics [scale=0.17]{Admin Doctor Session Logs.png}\\\\
+\caption{Doctor Session Logs}
+\end{figure}
+\begin{figure}[h]
+\includegraphics [scale=0.18]{Admin User Session Logs.png}\\
+\caption{User Session Logs}
+\end{figure}
+\clearpage
+\textbf{View Reports:} Here the admin can view the reports between a certain date.\\
+\begin{figure}[h]
+\includegraphics [scale=0.17]{B_w dates reports Admin.png}\\
+\caption{Reports}
+\end{figure}
+
+\textbf{Feedback about the page:} Any user who will visit our page website, can leave feedback without registering into the system, about the page. The user can give advice or address any problem about the website through this feature. These feedbacks will be stored in the feedback option of the admin panel. And admins can view those feedback and remark the reviews.\\
+\begin{figure}[h]
+\includegraphics [scale=0.17]{Admin Manage Unread Queries.png}\\
+\caption{Admin Manage Unread Queries}
+\end{figure}
+\begin{figure}[h]
+\includegraphics [scale=0.17]{Admin Query Details.png}\\\\
+\caption{Admin Query Details}
+\end{figure}
+\begin{figure}[h]
+\includegraphics [scale=0.17]{Admin Query Details2.png}\\
+\caption{Add Remark}
+\end{figure}
+\clearpage
+\textbf{Change Password:} The admin can change the password for the admin panel.\\
+\begin{figure}[h]
+\includegraphics [scale=0.17]{admin-pass-change.png}\\
+\caption{Change Password}
+\end{figure}
+
+\subsubsection{Patient Log In}
+At first the pateint need to register into the system and then they can log in into the website. \\
+
+\begin{figure}[h]
+\includegraphics [scale=0.3]{Patient Log in.png}\\\\
+\caption{Patient Log in}
+\end{figure}
+\clearpage
+\begin{figure}[h]
+\textbf{Patient Dashboard:} \\\\\\
+\includegraphics [scale=0.17]{User Dashboard.png}\\\\
+\caption{Patient Dashboard}
+\end{figure}
+
+\textbf{Profile:} Here the user basically can see the information about themselves which they will provide during creating their profile and simply edit their profile.
+\begin{figure}[h]
+\includegraphics [scale=0.12]{User Edit Profile.png}
+\caption{Edit Profile}
+\end{figure}
+\clearpage
+\begin{figure}[h]
+\textbf{Book Appointment:} They can book appointments of a doctor. \\
+\includegraphics [scale=0.17]{User Book Appointment.png}\\
+\caption{Book Appointment}
+\end{figure}
+
+\textbf{View Appointment History:} Here they can see the appointments which are they booked.\\
+\begin{figure}[h]
+\includegraphics [scale=0.15]{User Appointment History.png}\\
+\caption{Appointment History}
+\end{figure}
+\clearpage
+\textbf{View Prescription:} Here they can see their prescription which are provided by the doctor's.\\
+\begin{figure}[h]
+\includegraphics [scale=0.14]{Reg Users Prescription.png}\\
+\caption{Prescription}
+\end{figure}
+
+\textbf{Change Password:} The user can change their account password in this section.\\
+\begin{figure}[h]
+\includegraphics [scale=0.17]{User change Password.png}\\\\
+\caption{Change Password}
+\end{figure}
+\clearpage
+
+\subsubsection{Doctor Log In}
+In our website there will be a doctor login system which will be only for doctors and these doctors will be approved by the admin. A Doctor can login to the system by using unique email address and password.\\
+\begin{figure}[h]
+\includegraphics [scale=0.17]{Doctor Login.png}\\\\
+\caption{Doctor Log in}
+\end{figure}
+
+\textbf{Doctor Dashboard:}\\
+\begin{figure}[h]
+\includegraphics [scale=0.17]{Doctor Dashboard.png}\\\\
+\caption{Doctor Dashboard}
+\end{figure}
+\clearpage
+\textbf{Profile:} Here the doctor can see the profile information which are added by the doctor and can simply edit them.\\
+\begin{figure}[h]
+\includegraphics [scale=0.14]{Doctr Edit Doctor Details.png}\\
+\caption{Edit Doctor Details}
+\end{figure}
+
+\textbf{View Appointment History:} The doctor's can see the appointments under them.\\
+\begin{figure}[h]
+\includegraphics [scale=0.13]{Doctor Appointment History.png}\\
+\caption{Doctor Appointment History}
+\end{figure}
+\clearpage
+\begin{figure}[h]
+\textbf{Manage Patient:} Here the doctor can add the patient with their medical history and then prescribe them according to their problem.\\\\\\
+\begin{center}
+\includegraphics [scale=0.13]{Doctor Add Patient1.png}\\
+\caption{Add Patient}
+\vspace{0.2in}
+\includegraphics [scale=0.13]{Doctor Manage Patients3.png}
+\caption{Prescribe}
+\end{center}
+\end{figure}
+\clearpage
+\begin{figure}[h]
+\includegraphics [scale=0.13]{prescribtion.png}\\
+\caption{Prescription}
+\end{figure}
+\subsection{About Us}
+In this section the information about our page will be given. Here the user can find how to contact us if he/she faces any troubles. Here contact number and the email will be given. \\\\ 
+\begin{figure}[h]
+\begin{center}
+\includegraphics [scale=0.08]{Services.png}
+\caption{About Us}
+\end{center}
+\end{figure}
+\clearpage
+\subsection{Feedback}
+Our website feedback widget is a button that sits at the edge of a web page. Users can \\\\
+1.	Rate the Doctors.\\
+2.	Share their reviews.\\ 
+3.	Usually answer an open-ended question about how admin could improve their page.\\
+\begin{figure}[h]
+\begin{center}
+\includegraphics [scale=0.18]{feedback.png}
+\caption{Feedback}
+\end{center}
+\end{figure}
+\clearpage
+\section{\emph{\large{DESIGN}}}
+\begin{figure}[h]
+\subsection{ER Diagram}
+\begin{center}
+\includegraphics[scale=0.36]{ER_Diagram.png}
+\caption{ER Diagram}
+\end{center}
+\subsection{Database Tables}
+\begin{center}
+\includegraphics[scale=0.36]{database.png}
+\caption{Database Tables}
+\end{center}
+\end{figure}
+\clearpage
+\subsection{Patient Register}
+Expanded Use Case
+\begin{center}
+\begin{tabular}{ |c| c| }
+\hline
+Use case & Patient register  \\ 
+\hline
+Actors & patient \\  
+\hline
+Purpose & Register to have service \\ 
+\hline
+Overview & To have more services from the website the patient have to register at first. \\ 
+\hline
+Type & Primary  \\ 
+\hline
+Cross References&  \\ 
+\hline
+\end{tabular}
+\end{center}
+Typical course of event:
+
+\begin{center}
+\begin{tabular}{ |c| c| }
+\hline
+Actor action & System Response \\ 
+\hline
+1.The use case begins when the\\Patient registered to the system.
+& 3.The system will take the data and save it \\ to the database.\\  
+\hline
+2.The patient at first need to register \\ to the system then he or she will \\ be able to have service from the website. & 4.The actor starts performing
+the selected action. \\   
+\hline
+\end{tabular}
+\end{center}
+Alternative course:\\
+Section 4: While registering to the system if there is any typing mistake then the actor will not be able to register and there will be an error there.
+
+\subsection{Login}
+\begin{center}
+\begin{tabular}{ |c| c| }
+\hline
+Use case & Login  \\ 
+\hline
+Actors & Patient ,Doctor ,admin. \\  
+\hline
+Purpose & Start to do log in for more options\\ 
+\hline
+Overview & The patient, doctor and admin have to login at first to visualized more options. \\ 
+\hline
+ Type & Primary  \\ 
+\hline
+Cross References &  \\ 
+\hline
+\end{tabular}
+\end{center}
+Typical course of event:
+
+\begin{center}
+\begin{tabular}{ |c| c| }
+\hline
+Actor action & System Response \\ 
+\hline
+ 1.The use case begins when the Patient, Doctor \\ and admin choose to perform a login.
+
+& 3.The system will take the data and save it.
+
+\\  
+\hline
+2. The Patient ,Doctor ,admin first \\ login to the system. & 4. The actor starts performing the selected action.\\   
+\hline
+\end{tabular}
+\end{center}
+Alternative course:\\
+Section 4: While login the system if there is any typing mistake then the actor will not be able to login and there will be an error there.
+
+
+\subsection{Feedback}
+\begin{center}
+\begin{tabular}{ |c| c| }
+\hline
+Use case & Feedback \\ 
+\hline
+Actors & Any user \\  
+\hline
+Purpose & To have feedback from users. \\ 
+\hline
+Overview & Any user can give any kind of feedback without login.\\ 
+\hline
+Type & primary  \\ 
+\hline
+Cross References & \\ 
+\hline
+\end{tabular}
+\end{center}
+Typical course of event:
+
+\begin{center}
+\begin{tabular}{ |c|c| }
+\hline
+Actor action & System Response \\ 
+\hline
+1.The use case begins when any user chooses \\to give feedback to the system. & 4.The system will take the feedback data and save it  \\  
+\hline
+2.The user without login can give \\feedback to the system. & 5.	The actor starts performing the selected action. \\  
+\hline
+ 3.The feedback data can be\\ seen by the admin. &  \\
+\hline
+\end{tabular}
+\end{center}
+Alternative course:\\
+Section 4: If the is not properly saved in the database then the admin will not be able to see the feedback that is given by the user.
+
+
+\subsection{Password Change}
+\begin{center}
+\begin{tabular}{ |c| c| }
+\hline
+Use case & Password Change  \\ 
+\hline
+Actors & Patient ,Doctor. \\  
+\hline
+Purpose & Changing the password \\ 
+\hline
+Overview & The patient and doctor can change their password. \\ 
+\hline
+Type & Secondary  \\ 
+\hline
+Cross References &  \\ 
+\hline
+\end{tabular}
+\end{center}
+Typical course of event:
+
+\begin{center}
+\begin{tabular}{ |c|c| }
+\hline
+Actor action & System Response \\ 
+\hline
+1.The use case begins when the doctor or\\ patient chooses to change their password. & 2. The system will take the new password and save it  \\ 
+\hline
+& 3.The system will remove the previous password \\ 
+& 4.Then the actor starts performing the selected action. \\
+\hline
+\end{tabular}
+\end{center}
+Alternative course: \\
+Section 2: If the new password is not saved in the database then while login to the system for the second time there will be an error seen.
+
+\subsection{Add doctor}
+\begin{center}
+\begin{tabular}{ |c| c| }
+\hline
+Use case & Add doctor\\ 
+\hline
+Actors & admin\\  
+\hline
+Purpose & Add new doctors to the system\\ 
+\hline
+Overview & The admin can only add doctors\\ 
+\hline
+Type & Secondary\\ 
+\hline
+Cross References& cell2\\ 
+\hline
+\end{tabular}
+\end{center}
+Typical course of event:
+
+\begin{center}
+\begin{tabular}{ |c| c| }
+\hline
+Actor action & System Response \\ 
+\hline
+1.The use case begins when the admin\\ chooses to add doctors to the system. & 3.The system will take all the information and save it. \\  
+\hline
+2.The admin will give all information\\ of the doctor and will add them\\ to the system. & 4.Then the actor starts performing the selected action.\\  
+\hline
+\end{tabular}
+\end{center}
+Alternative course:\\
+Section 4: If the data is not saved properly to the system then the doctor won’t be added to the system.
+
+\subsection{Update doctor information}
+\begin{center}
+\begin{tabular}{ |c| c| }
+\hline
+Use case & Update doctor information \\ 
+\hline
+Actors & admin \\  
+\hline
+Purpose & Update doctors to the system\\ 
+\hline
+Overview & The admin can only update doctor’s info \\ 
+\hline
+Type & Secondary \\ 
+\hline
+Cross References &  \\ 
+\hline
+\end{tabular}
+\end{center}
+Typical course of event:
+
+\begin{center}
+\begin{tabular}{ |c| c| }
+\hline
+Actor action & System Response \\ 
+\hline
+1.The use case begins when the admin \\chooses to update doctor’s info\\ to the system. & 3.The system will take all the information and save it.\\  
+\hline
+2.The admin will give the updated \\information of the doctor and will add them \\to the system. & 4.Then the actor starts performing the selected action. \\  
+\hline
+\end{tabular}
+\end{center}
+Alternative course:\\
+Section 4: If the data is not saved properly to the system then there will be an error there.
+
+
+
+\subsection{Book appointments}
+\begin{center}
+\begin{tabular}{ |c| c| }
+\hline
+Use case & Book appointments\\ 
+\hline
+Actors & patients\\  
+\hline
+Purpose & To have an appointment\\ 
+\hline
+Overview & The patient can have an appointment according to their needs. \\ 
+\hline
+Type & Secondary\\ 
+\hline
+Cross References &\\ 
+\hline
+\end{tabular}
+\end{center}
+Typical course of event:
+
+\begin{center}
+\begin{tabular}{| c| c| }
+\hline
+Actor action & System Response\\ 
+\hline
+1.The use case begins when\\ the patient wants to give an appointment \\of a doctor. & 3.The system will take all the information and save it. \\  
+\hline
+2.The patient will give all the\\ information that is needed to \\have an appointment. & 4.Then the actor starts performing the selected action. \\   
+\hline
+\end{tabular}
+\end{center}
+Alternative course:\\
+Section 4: If the data is not saved properly to the system then the patient will face harassment.
+\vspace{0.3in}
+\subsection{Add patient}
+\begin{center}
+\begin{tabular}{ |c| c| }
+\hline
+Use case & Add patient  \\ 
+\hline
+Actors & doctor\\  
+\hline
+Purpose & Add new patient to the system \\ 
+\hline
+Overview & The doctor can add patient \\ 
+\hline
+Type & Secondary  \\ 
+\hline
+Cross References &  \\ 
+\hline
+\end{tabular}
+\end{center}
+Typical course of event:
+
+\begin{center}
+\begin{tabular}{ |c| c| }
+\hline
+Actor action & System Response \\ 
+\hline
+1.The use case begins when the doctor\\ chooses to add patients to the system. & 3.The system will take all the information and save it. \\  
+\hline
+2.The doctor will give all information\\ of the patient and will add them\\ to the system. & 4.Then the actor starts performing the selected action.\\  
+ \hline
+\end{tabular}
+\end{center}
+Alternative course:\\
+Section 4: If the data is not saved properly to the system then the patient won’t be able to have service from the system.
+\clearpage
+\subsection{View appointment history}
+\begin{center}
+\begin{tabular}{ |c| c| }
+\hline
+Use case & View appointment history: \\ 
+\hline
+Actors & Doctor, patient\\  
+\hline
+Purpose & View appointment history  \\ 
+\hline
+Overview & View appointment history both doctor and patient \\ 
+\hline
+Type & Secondary \\ 
+\hline
+Cross References &  \\ 
+\hline
+\end{tabular}
+\end{center}
+Typical course of event:
+
+\begin{center}
+\begin{tabular}{ |c| c |}
+\hline
+Actor action & System Response \\ 
+\hline
+1.The use case begins when\\the doctor or patient chooses to\\view appointment history. & 2.The system will show all the information from the database.\\ 
+\hline
+& 3.Then the actor starts performing the selected action.\\ 
+\hline
+\end{tabular}
+\end{center}
+Alternative course:
+Section 4: If the data is not saved properly to the system then the patient and the doctor won’t be able to have service from the system.\\\\
+\clearpage
+\section{\emph{\large{Implementation}}}
+Software implementation refers to the process of introducing and integrating software applications into business processes (as part of a digital transformation strategy). Implementing new tools and software within an enterprise can be complex depending on the size of the organization and software.\\
+
+After carefully planning our project, we are ready to move on to the third phase of the project management lifecycle, the project implementation phase. The implementation phase is putting the project plan into action. Here, the project manager (one of our project mates) coordinates and directs project resources to achieve the goals of the project plan. As the project developed, it was the project manager's job to guide and manage each activity at every stage. This is what happens during the implementation phase of the project lifecycle. Follow the plan we created and deal with any issues that arise.\\
+
+During the implementation phase, we did the actual project work and produced results. The term “deliverables” means everything that a project provides. Project deliverables include products or services that me and my team provide to clients, customers, or sponsors. This also includes compiled project management documentation.\\
+
+The steps to create each artifact depend on the type of project we did, so we can't be detailed here. For example, engineering and telecommunications projects focus on using equipment, resources, and materials to create each project deliverable, whereas computer software projects focus on creating each project deliverable may require the development and implementation of software code routines. The activities required to produce each deliverable are clearly identified in the project requirements document and project plan. Since our project is a computer software project,we focused on implementation of software code routines.\\
+\clearpage
+\section{\emph{\large{Testing }}}
+We have used PHPUNIT as our Unit Testing Tool. Unit testing ensures that all code meets quality standards before it's deployed. This ensures a reliable engineering environment where quality is
+very important. Over the course of the product development life cycle, unit testing saves time and money, and helps developers write better code, more efficiently.\\
+\section{\emph{\large{Maintenance Plan }}}
+Software maintenance is a set of activities necessary to enable cost-effective deployment, Software system support. Activities are executed in the pre-delivery phase. As well as the post-delivery phase. Pre-delivery activities include post-delivery planning.Operational, supportability and logistics decisions. Post-delivery activities include:\\
+Software fixes, training, help desk operations.\\
+
+\textbf{Phase 1: Setup}– The setup phase is about making sure we’re set for success. Have leadership support and resources available. Building a clear case for change. Identified the most important stakeholders and created an initial communication plan.
+So for maintenance we require leadership support and resources. We also need a communication plan for maintaining the project. \\\\
+\textbf{Phase 2: Define} – This phase analyzes the actual situation. The so-called "as-is" determines the desired final state accordingly. So-called "To Be".
+We need to identify the features that we have to update and the features which don’t need to be updated, it will work properly as it is.\\\\
+\textbf{Phase 3: Develop} – Based on the “To Be”, define new processes, roles and responsibilities in detail. Make necessary changes to the supporting system. Then develop a training and coaching program. In this phase we will determine what we will need for developing the software and we are going to make necessary changes on our team and the support we need.\\\\
+\textbf{Phase 4: Implement} – In this phase, we will develop the software where it needs to be updated.Mainly we will implement the plan that we made in the development phase.\\\\
+\textbf{Phase 5: Close Out} – After implementing changes, conduct an evaluation to ensure that our planning and scheduling processes stand the test of time. And don't untangle when we retire, improve. Identify lessons learned and plan to sustain change.\\\\
+
+\textbf{Phase 6: Sustain} – Making changes is easy, but maintaining them is much harder. At the end of our implementation, we will establish practices that help us to maintain our implementation. Think performance metrics and annual process reviews.\\
+
+\section{\large{\emph{Conclusion}}}
+In conclusion, We had a great time working on this project and learnt a lot in the process. Now, a lot of fresh ideas and potential issues with a system like this are fairly evident to me. We won't assert that this website provides people with 100\% functionality. It has amazing functionality, but as we worked, we discovered a way to make it more useful to us. This project has been enjoyable for us, and we wish to continue working on it to improve it. We think I can change it up such that folks will be pleased with the outcome. We stand apart from every other creature in the world thanks to our ingenuity. To simplify and improve the comfort of our lives, we create tools and equipment. We started doing this at a very young age, and we've never stopped creating new stuff since. Because of this inventiveness, the world has changed dramatically from what it was for our predecessors.  Our techniques for learning new things vary. Some individuals embrace change head-on, while others prefer to take it all slowly. This has always been the case and will remain the case for humans. But new tools are always being developed. Both science and our human society will continue on their respective journeys. I am really happy to be a part of this project and have great optimism that one day your medical experience will be just like this.
+\end{document}
